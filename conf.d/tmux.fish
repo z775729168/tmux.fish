@@ -56,7 +56,7 @@ function _fish_tmux_plugin_run
     test $fish_tmux_iterm2 = true && set -a tmux_cmd -CC
     test $fish_tmux_unicode = true && set -a tmux_cmd -u
 
-    if test $fish_tmux_autoconnect = true && (ps -e | grep -q tmux)
+    if test $fish_tmux_autoconnect = true && ps -e | grep -q tmux
         exec $tmux_cmd attach
     else
         if test $fish_tmux_fixterm = true
