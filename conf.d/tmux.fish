@@ -58,6 +58,7 @@ function _fish_tmux_plugin_run
 
     if test $fish_tmux_autoconnect = true; and ps -e | grep -q tmux
         exec $tmux_cmd attach
+        exec echo attach
     else
         if test $fish_tmux_fixterm = true
             set -a tmux_cmd -f $_fish_tmux_fixed_config
@@ -67,8 +68,10 @@ function _fish_tmux_plugin_run
 
         if set -q fish_tmux_default_session_name
             exec $tmux_cmd new-session -s $fish_tmux_default_session_name
+            exec echo default-session
         else
             exec $tmux_cmd new-session
+            exec echo new-session
         end
     end
 end
